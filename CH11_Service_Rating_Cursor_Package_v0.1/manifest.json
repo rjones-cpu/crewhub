@@ -1,0 +1,171 @@
+{
+  "package_name": "CH11_Service_Rating_Cursor_Package_v0.1",
+  "package_version": "0.1",
+  "prepared_date": "2026-08-15",
+  "status": "Working Draft \u2014 implementation handoff",
+  "owner": "Digital 6 Marketing Inc. / LodgeX",
+  "primary_decision_authority": "Ralph Jones",
+  "file_count": 32,
+  "files": [
+    {
+      "path": ".cursor/rules/lodgex-service-rating.mdc",
+      "size_bytes": 3296,
+      "sha256": "9c4351ef2ead6daeaf7ecb0a21a3ecad8a615bbcf0107ab241da5e96758df698"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "size_bytes": 671,
+      "sha256": "79544571c1bb47ca32a4f5ecae8b63c6c906b0f780be5150a4bbbbf5ff027501"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 6584,
+      "sha256": "c53894da480e4aa2693b80e05611e51531b575ba210f2b80e5688a0c0e820508"
+    },
+    {
+      "path": "assets/UI_REFERENCE_CORRECTION_NOTE.md",
+      "size_bytes": 1045,
+      "sha256": "4f5ad1f114ecf3f75ca003ffffc35a4e3cc12796d2e6b0a9b5adf7852aebc57a"
+    },
+    {
+      "path": "assets/crew_hub_company_command_reference.png",
+      "size_bytes": 1373838,
+      "sha256": "8c9f135115eb35049d2bb93112d72b3f9ab47fd00e96008f7edc6f58f971a4b3"
+    },
+    {
+      "path": "combined/LodgeX_CH11_Service_Rating_Combined_Manual_v0.1.md",
+      "size_bytes": 182115,
+      "sha256": "6fc73bd9a26fa8f1351cdd11c55869ce5aa5793bdd9a983e130f9e91f5f43537"
+    },
+    {
+      "path": "config/service_rating_policy_schema.json",
+      "size_bytes": 5889,
+      "sha256": "5abdeabc07956f62659ffc9a29a168b4ab25bcfda0a4621ef01bdcfc23a59423"
+    },
+    {
+      "path": "config/service_rating_policy_v1_working_default.json",
+      "size_bytes": 5581,
+      "sha256": "691644c4c4383cb15391dfb282c21671b7c0a9289731ce80ef8717cbca610539"
+    },
+    {
+      "path": "cursor/CURSORIGNORE_RECOMMENDATIONS.md",
+      "size_bytes": 701,
+      "sha256": "c6517a39002de73916191e87d3ebd480e521b26281b5e04b6b22a3c68a524b69"
+    },
+    {
+      "path": "cursor/CURSOR_MASTER_IMPLEMENTATION_PROMPT.md",
+      "size_bytes": 3946,
+      "sha256": "1f703aa70e23036ff341c52979cbc9763b272117f28cf30d53ebef0f7302c7dd"
+    },
+    {
+      "path": "cursor/CURSOR_PHASE_PROMPTS.md",
+      "size_bytes": 3224,
+      "sha256": "8eee37f7349c4b84b512a063de52e4f26d62a60a42928c34de264c1bd9bbe225"
+    },
+    {
+      "path": "cursor/CURSOR_REPOSITORY_INTAKE_CHECKLIST.md",
+      "size_bytes": 1855,
+      "sha256": "5c0e1e485cb7a5c5fbc4cbdaa3ddfeee841a4c190e337b9321eb10d069b5d06b"
+    },
+    {
+      "path": "database/LARAVEL_MIGRATION_PLAN.md",
+      "size_bytes": 2750,
+      "sha256": "63a03d27a354ac0b089997b11cb1edc6282242164124d952ab3fa19ca76f926b"
+    },
+    {
+      "path": "database/REFERENCE_SCHEMA.sql",
+      "size_bytes": 12776,
+      "sha256": "5ef7f89496ea8937cbcacd6fd89e54152399adab0868eba03aa713eee8c2c185"
+    },
+    {
+      "path": "docs/01_Executive_Overview_and_Governance.md",
+      "size_bytes": 10227,
+      "sha256": "2552ea3917da682c1f52756c3c418d8f77faa999904d9392d660c916a135a92e"
+    },
+    {
+      "path": "docs/02_Crew_Hub_User_Manual.md",
+      "size_bytes": 15215,
+      "sha256": "51468a3125d75d9d6c67b3bb4266389de8fec0e51ed85d54e14c6a20d0b6793e"
+    },
+    {
+      "path": "docs/03_Major_Projects_User_Manual.md",
+      "size_bytes": 15016,
+      "sha256": "657e87eaddc5ab6c031d1d5a17c4340fefd63de124574c835a175324aabeda27"
+    },
+    {
+      "path": "docs/04_Scoring_Policy_and_Calculation_Manual.md",
+      "size_bytes": 21006,
+      "sha256": "8f5163f8b5d0d9fbaca76367227f50f5fac15cdbcb24e15ac33f2703ddbe6c5b"
+    },
+    {
+      "path": "docs/05_Cross_Product_Interaction_Manual.md",
+      "size_bytes": 10516,
+      "sha256": "421e8e13b532a0cc1653025484ddd97345dc50ada1ad4275de8e9a34e9c486d1"
+    },
+    {
+      "path": "docs/06_Dispute_Exception_Override_and_Corrective_Action_Manual.md",
+      "size_bytes": 13372,
+      "sha256": "d66c53ad9d55c26422b89dd9d26b779986331128b365c76ef9976bad233fc454"
+    },
+    {
+      "path": "docs/07_Roles_Permissions_and_Data_Visibility.md",
+      "size_bytes": 10865,
+      "sha256": "d2fa9adc574ef69ab1769fbc2b1ce690a02823216c6e7e8797195eb8ce97cba5"
+    },
+    {
+      "path": "docs/08_Crew_Hub_UI_Functional_Design.md",
+      "size_bytes": 11179,
+      "sha256": "aa62027e1b972e32588c1994e545f5a081454b5a6ea124b004a5186da6573fd0"
+    },
+    {
+      "path": "docs/09_Major_Projects_UI_Functional_Design.md",
+      "size_bytes": 10467,
+      "sha256": "67fc79481440b1951f92d42a5b21045e3eda609fffe10a4b2ad6fd0bf7e217b2"
+    },
+    {
+      "path": "docs/10_Technical_Implementation_Architecture.md",
+      "size_bytes": 15796,
+      "sha256": "dc03909ffc3ca97a1db47cb39afb2f382e02e0c93e25326e83bc216c1d8e3191"
+    },
+    {
+      "path": "docs/11_API_Events_and_MCP_Contracts.md",
+      "size_bytes": 12286,
+      "sha256": "ac0ef327b9c77d7af8f1bc72a5da9d4ffbe0dc0dbc520de9470d3abce1c72c59"
+    },
+    {
+      "path": "docs/12_Test_Acceptance_and_Release_Plan.md",
+      "size_bytes": 11749,
+      "sha256": "d1763057be26fc7c92f5f7c49e3e6ab319fb818ba5fffe0bf283ca6d49916dad"
+    },
+    {
+      "path": "docs/13_Implementation_Backlog.md",
+      "size_bytes": 9138,
+      "sha256": "f4ff971d247aba049c235cc72e69002272ee995c7606baf81f11410df28ffd82"
+    },
+    {
+      "path": "docs/14_Open_Decisions_and_Production_Gates.md",
+      "size_bytes": 6269,
+      "sha256": "940b426836c8d41ab4a9ac4313837aa1149e42e7b76647caee81168f27b804da"
+    },
+    {
+      "path": "examples/event_payloads.json",
+      "size_bytes": 3928,
+      "sha256": "275b55acfef120fce8d3ba765f2e6dd906c0d26885e4e16bd69e0941d0ba7cd0"
+    },
+    {
+      "path": "examples/sample_rating_calculations.md",
+      "size_bytes": 3614,
+      "sha256": "9be41da3d6da5e52f0bcd2d0f5b0c4b06aedc18eef5ed767639ea9a4cc365ce3"
+    },
+    {
+      "path": "ui/component_catalogue.md",
+      "size_bytes": 3310,
+      "sha256": "13dde84be31d7850bf891c4e59469869a7bd53f4f5e2871054c93d8b6f045639"
+    },
+    {
+      "path": "ui/navigation_and_route_map.md",
+      "size_bytes": 2643,
+      "sha256": "a9ff044475c8b410ef5a49f6a815220d42d94788e5a70ecb478836a67dff4191"
+    }
+  ]
+}

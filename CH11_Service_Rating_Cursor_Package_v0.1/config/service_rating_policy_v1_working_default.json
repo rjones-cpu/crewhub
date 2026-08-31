@@ -1,0 +1,197 @@
+{
+  "$schema": "./service_rating_policy_schema.json",
+  "policy_code": "LODGEX_CH11_V1_WORKING_DEFAULT",
+  "policy_name": "LodgeX CH-11 Service Rating Version 1 Working Default",
+  "status": "working_draft",
+  "version": "1.0-working-default",
+  "time_zone": "America/Vancouver",
+  "effective_from": null,
+  "effective_to": null,
+  "evaluation_window": {
+    "type": "rolling_days",
+    "days": 30,
+    "monthly_locked_snapshot_enabled": true
+  },
+  "calculation": {
+    "overall_rule": "worst_applicable_criterion",
+    "a_requires_all_applicable_a": true,
+    "exclude_not_applicable": true,
+    "apply_approved_exceptions_before_calculation": true,
+    "critical_overrides_force_d": true,
+    "event_triggered_recalculation": true,
+    "daily_checkpoint_enabled": true,
+    "history_is_immutable": true,
+    "ai_may_assign_grade": false
+  },
+  "presentation": {
+    "A": {
+      "color_name": "green",
+      "label": "Compliant"
+    },
+    "B": {
+      "color_name": "yellow",
+      "label": "On Watch"
+    },
+    "C": {
+      "color_name": "orange",
+      "label": "Action Required"
+    },
+    "D": {
+      "color_name": "red",
+      "label": "Critical"
+    },
+    "NA": {
+      "color_name": "gray",
+      "label": "Not Applicable"
+    },
+    "PENDING_DATA": {
+      "color_name": "neutral",
+      "label": "Pending Data"
+    }
+  },
+  "criteria": {
+    "workforce_delivery": {
+      "enabled": true,
+      "required": true,
+      "recommended_unit": "worker_position_day",
+      "thresholds": {
+        "A": {
+          "max_absolute_variance_percent": 5,
+          "all_critical_positions_covered": true
+        },
+        "B": {
+          "min_exclusive_absolute_variance_percent": 5,
+          "max_inclusive_absolute_variance_percent": 10,
+          "critical_prolonged_shortage_allowed": false
+        },
+        "C": {
+          "min_exclusive_absolute_variance_percent": 10,
+          "max_inclusive_absolute_variance_percent": 25,
+          "material_shortage_days_min": 2,
+          "material_shortage_days_max": 3,
+          "repeat_b_can_escalate": true
+        },
+        "D": {
+          "min_exclusive_absolute_variance_percent": 25,
+          "critical_position_unavailable_days_min_exclusive": 3,
+          "material_project_delivery_threat": true
+        }
+      }
+    },
+    "scheduled_arrival": {
+      "enabled": true,
+      "required": true,
+      "aggregation": "worst_unexcepted_event",
+      "thresholds": {
+        "A": {
+          "max_calendar_days_late": 0,
+          "within_configured_arrival_window": true
+        },
+        "B": {
+          "calendar_days_late": 1
+        },
+        "C": {
+          "calendar_days_late_min": 2,
+          "calendar_days_late_max": 3,
+          "repeat_b_can_escalate": true
+        },
+        "D": {
+          "calendar_days_late_min_exclusive": 3,
+          "no_show": true,
+          "critical_mobilization_missed": true
+        }
+      }
+    },
+    "journey_management": {
+      "enabled": true,
+      "required": false,
+      "applicability": "project_company_scope",
+      "thresholds": {
+        "A": {
+          "max_noncompliance_percent": 0
+        },
+        "B": {
+          "max_inclusive_noncompliance_percent": 20,
+          "isolated_noncritical_deficiency_allowed": true,
+          "unauthorized_high_risk_allowed": false
+        },
+        "C": {
+          "min_exclusive_noncompliance_percent": 20,
+          "max_inclusive_noncompliance_percent": 40,
+          "material_or_repeated_failure": true
+        },
+        "D": {
+          "min_exclusive_noncompliance_percent": 40,
+          "critical_conditions": [
+            "unauthorized_high_risk_journey",
+            "falsified_record",
+            "incident_linked_to_noncompliance"
+          ]
+        }
+      }
+    },
+    "lms_certification": {
+      "enabled": true,
+      "required": false,
+      "population_measure": "unique_affected_workers",
+      "thresholds": {
+        "A": {
+          "max_compliance_gap_percent": 0
+        },
+        "B": {
+          "max_inclusive_compliance_gap_percent": 20,
+          "critical_certification_missing_allowed": false
+        },
+        "C": {
+          "min_exclusive_compliance_gap_percent": 20,
+          "max_inclusive_compliance_gap_percent": 40
+        },
+        "D": {
+          "min_exclusive_compliance_gap_percent": 40,
+          "critical_conditions": [
+            "critical_certification_missing",
+            "falsified_evidence",
+            "knowingly_mobilized_noncompliant_worker"
+          ]
+        }
+      }
+    }
+  },
+  "repeat_escalation": {
+    "enabled": true,
+    "working_default": {
+      "qualifying_grade": "B",
+      "event_count": 2,
+      "lookback_days": 30,
+      "escalated_grade": "C"
+    },
+    "owner_approval_required": true
+  },
+  "reviews": {
+    "company_submission_business_days": 5,
+    "response_sla_business_days": {
+      "B": 5,
+      "C": 3,
+      "D": 1
+    },
+    "appeal_levels": 1,
+    "owner_approval_required": true
+  },
+  "publication": {
+    "mode": "automatic_working_default",
+    "critical_d_may_be_provisional_pending_verification": true,
+    "owner_approval_required": true
+  },
+  "data_quality": {
+    "stale_data_must_not_automatically_penalize": true,
+    "retain_last_valid_published_grade": true,
+    "manual_evidence_requires_authorization": true,
+    "manual_evidence_dual_verification_configurable": true
+  },
+  "all_projects_view": {
+    "overall_rule": "lowest_active_project_grade",
+    "show_grade_distribution": true,
+    "exclude_archived_projects_by_default": true,
+    "show_pending_data_count": true
+  }
+}

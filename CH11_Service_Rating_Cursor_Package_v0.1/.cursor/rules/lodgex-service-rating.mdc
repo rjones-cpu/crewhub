@@ -1,0 +1,39 @@
+---
+description: Build and maintain the LodgeX CH-11 Service Rating and its Crew Hub/Major Projects integrations using deterministic, versioned and auditable rules.
+globs:
+  - "app/**/*ServiceRating*"
+  - "app/Domain/ServiceRating/**"
+  - "resources/js/**/*ServiceRating*"
+  - "resources/js/**/ServiceRatings/**"
+  - "database/migrations/*service_rating*"
+  - "tests/**/*ServiceRating*"
+  - "routes/**/*.php"
+alwaysApply: false
+---
+
+# LodgeX CH-11 Service Rating engineering rules
+
+1. Read the package `README.md`, scoring manual, interaction manual, permission matrix, UI specifications and test plan before editing Service Rating code.
+2. Inspect the repository and reuse existing LodgeX identity, company, project, schedule, Journey Management, LMS, arrival, workflow, notification, audit, event, file and authorization services.
+3. Do not create duplicate systems of record.
+4. The official grade is deterministic. AI may explain or forecast but may not calculate, assign, override, suppress or publish the official grade.
+5. The overall grade is the worst applicable criterion. Never average grades.
+6. A requires every applicable criterion to be A.
+7. N/A is excluded and must not be confused with missing or stale data.
+8. Approved effective-dated exceptions are applied before calculation.
+9. Valid critical integrity/safety conditions force D.
+10. B is yellow, C is orange, A is green and D is red in every UI.
+11. In Crew Hub All Projects view, the overall grade is the lowest active project grade and the A/B/C/D distribution is shown separately.
+12. Users do not routinely choose a grade from a dropdown. They correct facts, submit evidence, request review, approve an exception or apply a restricted critical override. The engine recalculates.
+13. Snapshots and criterion results are immutable. Corrections create a new snapshot linked to the superseded result.
+14. Active policy versions are immutable. Changes create a new draft/effective version.
+15. Do not penalize a company solely because a required source is stale, conflicting or unavailable. Retain the last valid published grade and show Pending Data/Data Stale according to policy.
+16. Enforce tenant, company, project, role, functional authority, approval authority and evidence-classification scope server-side. Frontend hiding is not authorization.
+17. Do not perform direct cross-module table writes. Call authenticated application/domain services.
+18. Events and recalculations must be idempotent and auditable. Publish events after the database transaction commits.
+19. MCP and AI tools must inherit user permissions and call application services. Never query production MySQL directly.
+20. Do not implement `set_grade`, `change_grade`, `hide_rating` or equivalent tools/endpoints.
+21. Follow current repository ID, naming, module, TypeScript, testing, route and UI conventions. The package reference structure is guidance, not permission to create parallel architecture.
+22. Add unit, feature, authorization, event/idempotency and UI tests for every material change.
+23. Preserve loading, empty, N/A, Under Review, Data Stale, conflicting evidence, error and permission-denied states.
+24. Do not claim production readiness while open decisions in `docs/14_Open_Decisions_and_Production_Gates.md` remain unresolved.

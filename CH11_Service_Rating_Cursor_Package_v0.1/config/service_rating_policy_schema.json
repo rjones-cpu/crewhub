@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lodgex.example/schemas/service-rating-policy-v1.json",
+  "title": "LodgeX CH-11 Service Rating Policy",
+  "type": "object",
+  "required": [
+    "policy_code",
+    "policy_name",
+    "status",
+    "version",
+    "time_zone",
+    "evaluation_window",
+    "calculation",
+    "presentation",
+    "criteria",
+    "data_quality",
+    "all_projects_view"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "policy_code": {
+      "type": "string",
+      "minLength": 1
+    },
+    "policy_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": ["working_draft", "draft", "scheduled", "active", "superseded", "retired"]
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "time_zone": {
+      "type": "string",
+      "minLength": 1
+    },
+    "effective_from": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "effective_to": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "evaluation_window": {
+      "type": "object",
+      "required": ["type", "monthly_locked_snapshot_enabled"],
+      "properties": {
+        "type": {
+          "enum": ["rolling_days", "calendar_month", "mobilization_event", "custom"]
+        },
+        "days": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "monthly_locked_snapshot_enabled": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "calculation": {
+      "type": "object",
+      "required": [
+        "overall_rule",
+        "a_requires_all_applicable_a",
+        "exclude_not_applicable",
+        "critical_overrides_force_d",
+        "history_is_immutable",
+        "ai_may_assign_grade"
+      ],
+      "properties": {
+        "overall_rule": {
+          "const": "worst_applicable_criterion"
+        },
+        "a_requires_all_applicable_a": {
+          "const": true
+        },
+        "exclude_not_applicable": {
+          "const": true
+        },
+        "apply_approved_exceptions_before_calculation": {
+          "const": true
+        },
+        "critical_overrides_force_d": {
+          "const": true
+        },
+        "event_triggered_recalculation": {
+          "type": "boolean"
+        },
+        "daily_checkpoint_enabled": {
+          "type": "boolean"
+        },
+        "history_is_immutable": {
+          "const": true
+        },
+        "ai_may_assign_grade": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "presentation": {
+      "type": "object",
+      "required": ["A", "B", "C", "D", "NA", "PENDING_DATA"],
+      "properties": {
+        "A": { "$ref": "#/$defs/presentationEntry" },
+        "B": { "$ref": "#/$defs/presentationEntry" },
+        "C": { "$ref": "#/$defs/presentationEntry" },
+        "D": { "$ref": "#/$defs/presentationEntry" },
+        "NA": { "$ref": "#/$defs/presentationEntry" },
+        "PENDING_DATA": { "$ref": "#/$defs/presentationEntry" }
+      },
+      "additionalProperties": false
+    },
+    "criteria": {
+      "type": "object",
+      "required": [
+        "workforce_delivery",
+        "scheduled_arrival",
+        "journey_management",
+        "lms_certification"
+      ],
+      "properties": {
+        "workforce_delivery": { "$ref": "#/$defs/criterion" },
+        "scheduled_arrival": { "$ref": "#/$defs/criterion" },
+        "journey_management": { "$ref": "#/$defs/criterion" },
+        "lms_certification": { "$ref": "#/$defs/criterion" }
+      },
+      "additionalProperties": false
+    },
+    "repeat_escalation": {
+      "type": "object"
+    },
+    "reviews": {
+      "type": "object"
+    },
+    "publication": {
+      "type": "object"
+    },
+    "data_quality": {
+      "type": "object",
+      "required": [
+        "stale_data_must_not_automatically_penalize",
+        "retain_last_valid_published_grade",
+        "manual_evidence_requires_authorization"
+      ],
+      "properties": {
+        "stale_data_must_not_automatically_penalize": { "const": true },
+        "retain_last_valid_published_grade": { "const": true },
+        "manual_evidence_requires_authorization": { "const": true },
+        "manual_evidence_dual_verification_configurable": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "all_projects_view": {
+      "type": "object",
+      "required": ["overall_rule", "show_grade_distribution"],
+      "properties": {
+        "overall_rule": { "const": "lowest_active_project_grade" },
+        "show_grade_distribution": { "const": true },
+        "exclude_archived_projects_by_default": { "type": "boolean" },
+        "show_pending_data_count": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "presentationEntry": {
+      "type": "object",
+      "required": ["color_name", "label"],
+      "properties": {
+        "color_name": { "type": "string" },
+        "label": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "criterion": {
+      "type": "object",
+      "required": ["enabled", "required", "thresholds"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "required": { "type": "boolean" },
+        "recommended_unit": { "type": "string" },
+        "aggregation": { "type": "string" },
+        "applicability": { "type": "string" },
+        "population_measure": { "type": "string" },
+        "thresholds": {
+          "type": "object",
+          "required": ["A", "B", "C", "D"],
+          "properties": {
+            "A": { "type": "object" },
+            "B": { "type": "object" },
+            "C": { "type": "object" },
+            "D": { "type": "object" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
